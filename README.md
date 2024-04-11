@@ -36,7 +36,11 @@ This is a simple Book Library application that allows users to perform CRUD oper
 
    This will spin up a MongoDB container along with your application.
 
-5. Start the application:
+5. Run node fetchAndInsertData.js in order to seed data in the database.
+    ```bash
+     node fetchAndInsertData.js 
+
+6. Start the application:
 
    ```bash
    node index.js
