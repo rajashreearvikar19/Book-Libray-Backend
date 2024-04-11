@@ -19,8 +19,16 @@ async function fetchDataAndInsert() {
     });
     console.log('Connected to MongoDB');
 
-    // Insert fetched data into MongoDB collection
-    await Book.insertMany(books);
+    // Preprocess data: Convert publication year to number
+    const processedBooks = books.map(book => {
+      return {
+        ...book,
+        publication_year: parseInt(book.publication_year) || null, // Convert to number or null if conversion fails
+      };
+    });
+
+    // Insert processed data into MongoDB collection
+    await Book.insertMany(processedBooks);
     console.log('Data inserted successfully');
 
     // Close MongoDB connection
